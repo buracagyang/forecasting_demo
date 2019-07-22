@@ -1,0 +1,36 @@
+version: 1
+disable_existing_loggers: False  # 是否关闭当前存在的logger
+formatters:
+        simple:
+#            format: "%(asctime)s - %(filename)s[line:%(lineno)d] - %(levelname)s - %(message)s"
+            format: "%(message)s"
+handlers:
+    console:  #  打印到console中的配置，可在console看见日志信息
+            class: logging.StreamHandler
+            level: DEBUG
+            formatter: simple
+            stream: ext://sys.stdout
+    info_file_handler:  # 日志信息流配置
+            class: logging.handlers.RotatingFileHandler
+            level: INFO
+            formatter: simple
+            filename: info.log
+            maxBytes: 10485760  # 10MB
+            backupCount: 20
+            encoding: utf8
+    error_file_handler:  # 错误信息流配置
+            class: logging.handlers.RotatingFileHandler
+            level: ERROR
+            formatter: simple
+            filename: errors.log
+            maxBytes: 10485760
+            backupCount: 20
+            encoding: utf8
+loggers:
+    my_module:
+            level: ERROR
+            handlers: [info_file_handler]
+            propagate: no
+root:
+    level: INFO
+    handlers: [console,info_file_handler,error_file_handler]
