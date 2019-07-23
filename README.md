@@ -23,7 +23,7 @@ In this repository, a number of machine learning based forecasting models are im
 Here is a simple example showing how you can run this a forecasting algorithm on default dataset
 
 ```python
-pytyhon test_forecast_effect.py --model xgboost  # you can add more hyperparameters
+python test_forecast_effect.py --model XGBOOST  # you can add more hyperparameters
 ```
 
 
