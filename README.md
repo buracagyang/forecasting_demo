@@ -3,18 +3,18 @@ In this repository, a number of machine learning based forecasting models are im
 
 # Envs
 
-+ Python 3.5 | Windows 10
++ `Python 3.5` | `Windows 10`
 
 
 
 # Requirements
 
-+ xgboost==0.90
-+ scikit-learn==0.21.1
-+ PyYAML==5.1.1
-+ pandas==0.24.1
-+ numpy==1.15.1
-+ matplotlib==3.0.2
++ `xgboost`==0.90
++ `scikit-learn`==0.21.1
++ `PyYAML`==5.1.1
++ `pandas`==0.24.1
++ `numpy`==1.15.1
++ `matplotlib`==3.0.2
 
 
 
