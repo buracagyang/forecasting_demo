@@ -20,7 +20,13 @@ In this repository, a number of machine learning based forecasting models are im
 
 # Getting started, example
 
-Here is a simple example showing how you can run this a forecasting algorithm on default dataset
+Here is a simple example showing how you can run this a forecasting algorithm on default dataset.First, you need unzip data_set.zip:
+
+```bash
+unzip data_set.zip
+```
+
+And then, run this scripts `test_forecask_effect.py` :
 
 ```python
 python test_forecast_effect.py --model XGBOOST  # you can add more hyperparameters
