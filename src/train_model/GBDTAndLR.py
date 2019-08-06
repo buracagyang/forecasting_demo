@@ -12,6 +12,7 @@ Describe:
 import os
 import logging
 import pandas as pd
+import numpy as np
 from sklearn import metrics
 from sklearn.externals import joblib
 from sklearn.preprocessing import OneHotEncoder
@@ -100,8 +101,11 @@ class GBDTAndLR(object):
 
         # Plot ROC curve
         pred_prob_gbdt = model_gbdt.predict_proba(test_x)[:, 1]
-        fpr_gbdt, tpr_gbdt, _ = metrics.roc_curve(test_y, pred_prob_gbdt)
-        fpr_gbdt_lr, tpr_gbdt_lr, _ = metrics.roc_curve(test_y, pred_prob)
+        fpr_gbdt, tpr_gbdt, thresholds_gbdt = metrics.roc_curve(test_y, pred_prob_gbdt)
+        fpr_gbdt_lr, tpr_gbdt_lr, thresholds_lr = metrics.roc_curve(test_y, pred_prob)
+
+        roc_curve_df = pd.DataFrame(np.array([fpr_gbdt, tpr_gbdt, thresholds_gbdt]).T, columns=['fpr', 'tpr', 'ts'])
+        roc_curve_df.to_csv(os.path.join(other_out_path, 'GBDT_roc_curve_df.csv'), index=False, encoding='utf-8')
 
         plt.figure(1)
         plt.plot([0, 1], [0, 1], 'k--')
